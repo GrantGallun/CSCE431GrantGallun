@@ -23,6 +23,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <main>
+      <% if notice %>
+        <p id="notice" class="flash notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p id="alert" class="flash alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
