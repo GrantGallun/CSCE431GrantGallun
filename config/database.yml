@@ -1,0 +1,32 @@
+# PostgreSQL. Credentials come from the environment so none are stored in git.
+#
+# Local (course Docker image): the container entrypoint creates the role named by
+# DATABASE_USER / DATABASE_PASSWORD, so export those before running the app.
+# Heroku: the Heroku Postgres add-on sets DATABASE_URL, which Rails uses automatically.
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DATABASE_HOST") { "localhost" } %>
+  username: <%= ENV["DATABASE_USER"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: book_collection_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: book_collection_test
+
+# Heroku provides a single database through DATABASE_URL, so production uses one
+# database (Solid Cache/Queue/Cable are replaced with in-process adapters in
+# config/environments/production.rb).
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
