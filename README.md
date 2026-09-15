@@ -36,7 +36,7 @@ As a reader, I want to add a book so that my collection stays current.
 ### 3. View a book's details
 As a reader, I want to open one book so that I can see all of its information.
 - When I click "Show", I see the title, author, price (as currency) and published date.
-- The page has Edit, Delete and "Back to Home" links.
+- The page has Edit, Delete and "Back to Books" links.
 
 ### 4. Update a book
 As a reader, I want to correct a book's details.
@@ -50,8 +50,15 @@ As a reader, I want to remove a book, with a chance to change my mind.
 - Pressing "Delete Book" removes it and shows `Book "<title>" was successfully deleted.` on the Book index.
 - "Cancel" returns to the book without deleting it.
 
-### 6. Navigate home
-- Every page other than Home has a "Back to Home" (or Home) link.
+### 6. Navigate back
+- Every Book page other than the Book index has a "Back to Books" link, and the Book index links to the home page.
+
+### 7. Record which users own which books (Book Collection 4)
+As a librarian, I want to link users to books so that I can see who owns what.
+- The home page (`/`) is "User Books": a table of username and book title with Show, Edit and Destroy links.
+- "New User Book" shows drop-down lists containing only existing users and existing books.
+- The page links to "New User Book", "Book index" and "User index".
+- The User index lists usernames with Show, Edit and Destroy links and a "New User" link.
 
 ## Deploying to Heroku
 

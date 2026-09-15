@@ -1,0 +1,10 @@
+<% content_for :title, "Editing User Book" %>
+
+<h1>Editing User Book</h1>
+
+<%= render "form", user_book: @user_book, users: @users, books: @books %>
+
+<p>
+  <%= link_to "Show", @user_book %> |
+  <%= link_to "Back", user_books_path %>
+</p>
