@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :user_books
+  resources :users
   resources :books do
     # GET /books/:id/delete shows a confirmation page before the DELETE request.
     member do
@@ -10,6 +12,6 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Home page: the list of all books.
-  root "books#index"
+  # Home page: which users own which books.
+  root "user_books#index"
 end

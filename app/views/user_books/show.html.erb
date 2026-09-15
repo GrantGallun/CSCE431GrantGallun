@@ -1,0 +1,12 @@
+<% content_for :title, "User Book" %>
+
+<h1>User Book</h1>
+
+<%= render @user_book %>
+
+<p>
+  <%= link_to "Edit", edit_user_book_path(@user_book) %> |
+  <%= link_to "Back", user_books_path %>
+</p>
+
+<%= button_to "Destroy", @user_book, method: :delete, class: "danger" %>

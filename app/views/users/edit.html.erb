@@ -1,0 +1,10 @@
+<% content_for :title, "Editing User" %>
+
+<h1>Editing User</h1>
+
+<%= render "form", user: @user %>
+
+<p>
+  <%= link_to "Show", @user %> |
+  <%= link_to "Back", users_path %>
+</p>
