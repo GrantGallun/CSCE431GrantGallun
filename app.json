@@ -8,9 +8,6 @@
       "addons": [
         "heroku-postgresql:in-dyno"
       ],
-      "scripts": {
-        "postdeploy": "bundle exec rails db:schema:load"
-      },
       "env": {
         "RAILS_ENV": "review",
         "DISABLE_DATABASE_ENVIRONMENT_CHECK": "1"
