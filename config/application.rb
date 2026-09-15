@@ -23,5 +23,9 @@ module BookCollection
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # This app doesn't upload/transform images, so skip the image_processing
+    # gem requirement and its "Generating image variants require..." warning.
+    config.active_storage.variant_processor = :disabled
   end
 end
