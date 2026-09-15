@@ -1,0 +1,33 @@
+{
+  "name": "book-collection",
+  "description": "CSCE 431 Book Collection (Rails 8.1 + PostgreSQL)",
+  "stack": "heroku-24",
+  "addons": [
+    "heroku-postgresql:essential-0"
+  ],
+  "environments": {
+    "review": {
+      "addons": [
+        "heroku-postgresql:essential-0"
+      ],
+      "env": {
+        "RAILS_ENV": "production",
+        "DISABLE_DATABASE_ENVIRONMENT_CHECK": "1"
+      }
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "RAILS_ENV": "production",
+    "RAILS_SERVE_STATIC_FILES": "enabled",
+    "NODE_ENV": "production",
+    "YARN_PRODUCTION": "true"
+  }
+}

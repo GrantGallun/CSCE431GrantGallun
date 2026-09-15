@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8.0.3"
+gem "rails", "~> 8.1.3"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use postgresql as the database for Active Record
@@ -16,9 +16,6 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
-# json 3.0 removed the quirks_mode option that ActiveSupport 8.0 passes when writing
-# session cookies (ArgumentError: unknown keyword: quirks_mode), so stay on 2.x.
-gem "json", "~> 2.9"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
@@ -26,10 +23,8 @@ gem "json", "~> 2.9"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+# Required by the Week 3 CI lab's GitHub Actions workflow (Ruby 3.4's REXML is an add-on gem)
+gem "rexml"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -49,6 +44,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Required explicitly by the Week 3 CI lab's GitHub Actions workflow
+  gem "rubocop", require: false
 
   # RSpec testing framework [https://github.com/rspec/rspec-rails]
   gem "rspec-rails"
