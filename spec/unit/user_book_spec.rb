@@ -25,6 +25,8 @@ RSpec.describe UserBook, type: :model do
     described_class.create!(user: user, book: book)
     duplicate = described_class.new(user: user, book: book)
     expect(duplicate).not_to be_valid
+    # The database enforces it too, even if validations are skipped.
+    expect { duplicate.save!(validate: false) }.to raise_error(ActiveRecord::RecordNotUnique)
   end
 
   it 'is removed when its user or book is deleted' do
