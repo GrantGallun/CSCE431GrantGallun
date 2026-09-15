@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_15_044025) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_15_053543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_044025) do
     t.date "published_date"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index "lower((title)::text)", name: "index_books_on_lower_title", unique: true
   end
 
   create_table "user_books", force: :cascade do |t|
@@ -29,6 +30,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_15_044025) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["book_id"], name: "index_user_books_on_book_id"
+    t.index ["user_id", "book_id"], name: "index_user_books_on_user_id_and_book_id", unique: true
     t.index ["user_id"], name: "index_user_books_on_user_id"
   end
 

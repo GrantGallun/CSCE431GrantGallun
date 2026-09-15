@@ -57,4 +57,16 @@ RSpec.describe 'Adding a book', type: :feature do
 
     expect(page).to have_content("Published date can't be blank")
   end
+
+  # Digital collection: the same title cannot be added twice.
+  scenario 'with a title that is already in the collection' do
+    Book.create!(title: 'Refactoring', author: 'Martin Fowler', price: 47.99, published_date: Date.new(1999, 7, 8))
+
+    visit new_book_path
+    fill_in 'Title', with: 'refactoring'
+    expect { click_on 'Create Book' }.not_to change(Book, :count)
+
+    expect(page).to have_css('#alert', text: 'Book could not be added.')
+    expect(page).to have_content('Title has already been taken')
+  end
 end
