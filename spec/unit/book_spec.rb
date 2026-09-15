@@ -45,4 +45,13 @@ RSpec.describe Book, type: :model do
     expect(book).not_to be_valid
     expect(book.errors[:published_date]).to include("can't be blank")
   end
+
+  # Digital collection: a title is one catalog entry, regardless of case or extra spaces.
+  it 'is not valid with a title that is already in the collection' do
+    described_class.create!(title: 'Dune', author: 'Frank Herbert', price: 12.5, published_date: Date.new(1965, 8, 1))
+
+    book = described_class.new(title: '  dune ')
+    expect(book).not_to be_valid
+    expect(book.errors[:title]).to include('has already been taken')
+  end
 end
