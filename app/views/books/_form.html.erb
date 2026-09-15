@@ -21,6 +21,16 @@
     <%= form.text_field :author %>
   </div>
 
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, step: 0.01, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_date %>
+    <%= form.date_select :published_date, start_year: Date.current.year, end_year: 1800, prompt: true %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

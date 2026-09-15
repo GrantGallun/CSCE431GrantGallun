@@ -3,4 +3,8 @@
   <dd><%= book.title %></dd>
   <dt>Author</dt>
   <dd><%= book.author %></dd>
+  <dt>Price</dt>
+  <dd><%= number_to_currency(book.price) %></dd>
+  <dt>Published date</dt>
+  <dd><%= book.published_date&.to_fs(:published) %></dd>
 </dl>
